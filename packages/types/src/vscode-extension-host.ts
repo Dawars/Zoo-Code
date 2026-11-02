@@ -338,6 +338,7 @@ export type ExtensionState = Pick<
 	| "openRouterImageGenerationSelectedModel"
 	| "includeTaskHistoryInEnhance"
 	| "reasoningBlockCollapsed"
+	| "showCacheCountdown"
 	| "chatFontSize"
 	| "enterBehavior"
 	| "includeCurrentTime"
@@ -947,6 +948,8 @@ export interface ClineApiReqInfo {
 	tokensOut?: number
 	cacheWrites?: number
 	cacheReads?: number
+	cacheInvalidationCost?: number
+	cacheExpiresAt?: number
 	cost?: number
 	cancelReason?: ClineApiReqCancelReason
 	streamingFailedMessage?: string

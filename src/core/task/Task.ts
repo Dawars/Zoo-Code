@@ -4021,6 +4021,8 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 
 			try {
 				let cacheWriteTokens = 0
+				let cacheInvalidationCost: number | undefined
+				let cacheExpiresAt: number | undefined
 				let cacheReadTokens = 0
 				let inputTokens = 0
 				let outputTokens = 0
@@ -4071,6 +4073,8 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 						tokensOut: costResult.totalOutputTokens,
 						cacheWrites: cacheWriteTokens,
 						cacheReads: cacheReadTokens,
+						cacheInvalidationCost,
+						cacheExpiresAt,
 						cost: totalCost ?? costResult.totalCost,
 						cancelReason,
 						streamingFailedMessage,
@@ -4212,6 +4216,8 @@ export class Task extends EventEmitter<TaskEvents> implements TaskLike {
 								cacheWriteTokens += chunk.cacheWriteTokens ?? 0
 								cacheReadTokens += chunk.cacheReadTokens ?? 0
 								totalCost = chunk.totalCost
+								cacheInvalidationCost = chunk.cacheInvalidationCost
+								cacheExpiresAt = chunk.cacheExpiresAt
 								break
 							case "grounding":
 								// Handle grounding sources separately from regular content

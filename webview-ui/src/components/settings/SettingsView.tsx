@@ -213,6 +213,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 		openRouterImageApiKey,
 		openRouterImageGenerationSelectedModel,
 		reasoningBlockCollapsed,
+		showCacheCountdown,
 		chatFontSize,
 		enterBehavior,
 		includeCurrentTime,
@@ -441,6 +442,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 					followupAutoApproveTimeoutMs,
 					includeTaskHistoryInEnhance: includeTaskHistoryInEnhance ?? true,
 					reasoningBlockCollapsed: reasoningBlockCollapsed ?? true,
+					showCacheCountdown: showCacheCountdown ?? true,
 					chatFontSize: chatFontSize ?? null,
 					enterBehavior: enterBehavior ?? "send",
 					includeCurrentTime: includeCurrentTime ?? true,
@@ -942,6 +944,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 						{renderTab === "ui" && (
 							<UISettings
 								reasoningBlockCollapsed={reasoningBlockCollapsed ?? true}
+								showCacheCountdown={showCacheCountdown ?? true}
 								enterBehavior={enterBehavior ?? "send"}
 								chatFontSize={chatFontSize ?? undefined}
 								autoCloseZooOpenedFiles={autoCloseZooOpenedFiles}
